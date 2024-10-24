@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      sai_l10n_generator|l10n_builder:
+        enabled: true
+        generate_for:
+          - lib/**/*.dart
+
+builders:
+  sai_l10n_generator|l10n_builder:
+    import: "package:sai_l10n_generator/src/l10n_builder.dart"
+    builder_factories: ["l10nBuilder"]
+    build_extensions: { ".dart": [".arb"] }
+    auto_apply: root_package
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]
