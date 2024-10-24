@@ -14,19 +14,19 @@
 
 In your `pubspec.yaml` file, add `sai_l10n_generator` as a dependency in the `dev_dependencies` section:
 
-%%%yaml
+```yaml
 dev_dependencies:
 sai_l10n_generator:
 path: ../sai_l10n_generator # Or add the hosted package if available
 build_runner: ^2.1.7
 source_gen: ^1.1.1
-%%%
+```
 
 ### 2. Configure `build.yaml`
 
 Ensure that your package or project includes a `build.yaml` file with the following configuration:
 
-%%%yaml
+```yaml
 targets:
 $default:
 builders:
@@ -42,7 +42,7 @@ build_extensions: {".dart": [".g.dart"]}
 auto_apply: root_package
 build_to: source
 applies_builders: ["source_gen|combining_builder"]
-%%%
+```
 
 This configuration tells the `build_runner` to process all Dart files in the `lib/` folder for `.tr` strings and generate the appropriate localization file.
 
@@ -52,10 +52,10 @@ This configuration tells the `build_runner` to process all Dart files in the `li
 
 In your Dart files, use `.tr` to mark strings that need localization. Example:
 
-%%%dart
+```dart
 Text('helloWorld'.tr),
 Text('welcomeMessage'.tr),
-%%%
+```
 
 The `.tr` extension indicates that this string should be added to the localization files.
 
@@ -63,9 +63,9 @@ The `.tr` extension indicates that this string should be added to the localizati
 
 To generate or update your localization Dart file, run the following command in your terminal:
 
-%%%bash
+```bash
 flutter pub run build_runner build
-%%%
+```
 
 This will scan all Dart files in the `lib/` folder and generate or update the `lib/core/utils/l10n/app_translations.g.dart` file with your localization keys.
 
@@ -73,7 +73,7 @@ This will scan all Dart files in the `lib/` folder and generate or update the `l
 
 The generated Dart file will follow the pattern used by GetX for localization. Here’s an example of what the `app_translations.g.dart` file might look like:
 
-%%%dart
+```dart
 part of 'app_translations.dart';
 
 class \_AppTranslation implements AppTranslation {
@@ -96,7 +96,7 @@ static const en = {
 'clickMe': '',
 };
 }
-%%%
+```
 
 You can manually populate the translations for both `ar` (Arabic) and `en` (English) in the generated file.
 
@@ -112,9 +112,9 @@ By default, the package generates a localization file for Arabic (`ar`) and Engl
 
 If you need to clean the generated build artifacts, run:
 
-%%%bash
+```bash
 flutter pub run build_runner clean
-%%%
+```
 
 This will remove all build caches and force a clean rebuild on the next `build_runner` command.
 
