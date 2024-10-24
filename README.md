@@ -16,8 +16,7 @@ In your `pubspec.yaml` file, add `sai_l10n_generator` as a dependency in the `de
 
 ```yaml
 dev_dependencies:
-sai_l10n_generator:
-path: ../sai_l10n_generator # Or add the hosted package if available
+sai_l10n_generator: ^1.0.0
 build_runner: ^2.1.7
 source_gen: ^1.1.1
 ```
